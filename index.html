@@ -75,6 +75,10 @@
       <label><input type="radio" name="tool" value="start" /> Set Start</label>
       <label><input type="radio" name="tool" value="goal" /> Set Goal</label>
     </div>
+
+    <div class="control-group">
+      <label><input type="checkbox" id="showScores" /> Show g/h/f (A*)</label>
+    </div>
   </section>
 
   <main>
@@ -87,6 +91,16 @@
         <li>Compute time (ms): <strong id="computeTime">0</strong></li>
         <li>Animation frames: <strong id="frames">0</strong></li>
       </ul>
+
+      <div class="inspector">
+        <h4>Node inspector (A*)</h4>
+        <div class="row">Cell: (<span id="inspectX">-</span>, <span id="inspectY">-</span>)</div>
+        <div class="row">w: <span id="inspectW">1.0</span></div>
+        <div class="row">g(n): <span id="inspectG">-</span></div>
+        <div class="row">h(n): <span id="inspectH">-</span></div>
+        <div class="row">f(n) = g + w·h: <span id="inspectF">-</span></div>
+      </div>
+
       <div class="hints">
         <p>Tips:</p>
         <ul>
@@ -94,6 +108,7 @@
           <li>Use tools to set Start/Goal</li>
           <li>A* with w > 1 becomes Weighted A* (f = g + w·h)</li>
           <li>Turn penalty β discourages bends (A* only)</li>
+          <li>Enable “Show g/h/f (A*)” to see values</li>
         </ul>
       </div>
     </aside>
