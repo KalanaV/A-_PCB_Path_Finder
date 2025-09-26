@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PCB Pathfinding Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>PCB Pathfinding Visualizer</h1>
+    <p class="subtitle">Compare BFS, Dijkstra, A*, and Greedy Best-First on a grid (Manhattan routing)</p>
+  </header>
+
+  <section class="controls">
+    <div class="control-group">
+      <label for="algorithm">Algorithm</label>
+      <select id="algorithm">
+        <option value="bfs">BFS (Uninformed)</option>
+        <option value="dijkstra">Dijkstra (Uninformed)</option>
+        <option value="astar" selected>A* (Manhattan)</option>
+        <option value="greedy">Greedy Best-First</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="heuristicWeight">Heuristic weight (w)</label>
+      <input type="range" id="heuristicWeight" min="0" max="5" step="0.1" value="1" />
+      <span id="heuristicWeightValue">1.0</span>
+    </div>
+
+    <div class="control-group">
+      <label for="turnPenalty">Turn penalty (β)</label>
+      <input type="range" id="turnPenalty" min="0" max="5" step="0.5" value="0" />
+      <span id="turnPenaltyValue">0</span>
+      <small>(Applied in A* only for demo)</small>
+    </div>
+
+    <div class="control-group">
+      <label for="speed">Animation speed (ms/step)</label>
+      <input type="range" id="speed" min="0" max="100" step="5" value="20" />
+      <span id="speedValue">20</span>
+    </div>
+
+    <div class="control-group">
+      <label for="gridSize">Grid (cols × rows)</label>
+      <input type="number" id="cols" min="5" max="80" value="40" />
+      ×
+      <input type="number" id="rows" min="5" max="60" value="24" />
+      <button id="resize">Resize</button>
+    </div>
+
+    <div class="control-group">
+      <button id="run">Run</button>
+      <button id="step">Step</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+      <button id="clearWalls">Clear Walls</button>
+      <button id="randomMaze">Random Obstacles</button>
+    </div>
+
+    <div class="control-group legend">
+      <span class="legend-item"><span class="box box-start"></span>Start (S)</span>
+      <span class="legend-item"><span class="box box-goal"></span>Goal (G)</span>
+      <span class="legend-item"><span class="box box-wall"></span>Obstacle</span>
+      <span class="legend-item"><span class="box box-visited"></span>Visited</span>
+      <span class="legend-item"><span class="box box-frontier"></span>Frontier</span>
+      <span class="legend-item"><span class="box box-path"></span>Path</span>
+    </div>
+
+    <div class="control-group">
+      <span>Tools:</span>
+      <label><input type="radio" name="tool" value="draw" checked /> Draw Obstacles</label>
+      <label><input type="radio" name="tool" value="erase" /> Erase</label>
+      <label><input type="radio" name="tool" value="start" /> Set Start</label>
+      <label><input type="radio" name="tool" value="goal" /> Set Goal</label>
+    </div>
+  </section>
+
+  <main>
+    <canvas id="grid" width="960" height="576"></canvas>
+    <aside class="metrics">
+      <h3>Metrics</h3>
+      <ul>
+        <li>Nodes expanded: <strong id="nodesExpanded">0</strong></li>
+        <li>Path length (steps): <strong id="pathLength">0</strong></li>
+        <li>Compute time (ms): <strong id="computeTime">0</strong></li>
+        <li>Animation frames: <strong id="frames">0</strong></li>
+      </ul>
+      <div class="hints">
+        <p>Tips:</p>
+        <ul>
+          <li>Click-drag to draw/erase obstacles</li>
+          <li>Use tools to set Start/Goal</li>
+          <li>A* with w > 1 becomes Weighted A* (f = g + w·h)</li>
+          <li>Turn penalty β discourages bends (A* only)</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Made for classroom demos. No diagonals (Manhattan), single layer for clarity.</p>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

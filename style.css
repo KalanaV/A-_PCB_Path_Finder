@@ -1,0 +1,106 @@
+:root {
+  --bg: #0b1020;
+  --panel: #121a2f;
+  --text: #e7ecf3;
+  --muted: #9fb0c9;
+  --accent: #5fd1ff;
+  --visited: #ffc857;
+  --frontier: #4cc9f0;
+  --path: #90ee90;
+  --wall: #3b4252;
+  --start: #20c997;
+  --goal: #ff6b6b;
+  --grid: #1f263a;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background: linear-gradient(180deg, #0b1020 0%, #0a0f1e 100%);
+  color: var(--text);
+}
+
+header, footer {
+  padding: 12px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid #27304b;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.subtitle { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #27304b;
+}
+.control-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--panel);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #27304b;
+}
+.control-group label { font-weight: 600; }
+.control-group small { color: var(--muted); }
+.controls input[type="number"] {
+  width: 64px;
+}
+
+.legend { gap: 12px; }
+.legend-item { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+.box {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  border: 1px solid #334;
+}
+.box-start { background: var(--start); }
+.box-goal { background: var(--goal); }
+.box-wall { background: var(--wall); }
+.box-visited { background: var(--visited); }
+.box-frontier { background: var(--frontier); }
+.box-path { background: var(--path); }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 12px;
+  padding: 12px 16px 24px;
+}
+canvas#grid {
+  width: 100%;
+  height: auto;
+  background: var(--grid);
+  border: 1px solid #27304b;
+  border-radius: 8px;
+}
+
+.metrics {
+  background: var(--panel);
+  border: 1px solid #27304b;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.metrics h3 { margin: 6px 0 8px; }
+.metrics ul { list-style: none; padding: 0; margin: 0 0 8px; }
+.metrics li { margin: 4px 0; }
+.hints ul { margin: 6px 0 0 16px; color: var(--muted); }
+
+button, select, input[type="number"] {
+  background: #18223b;
+  color: var(--text);
+  border: 1px solid #2a3659;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+button:hover { border-color: var(--accent); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
