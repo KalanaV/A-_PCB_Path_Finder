@@ -51,9 +51,7 @@ header h1 {
 }
 .control-group label { font-weight: 600; }
 .control-group small { color: var(--muted); }
-.controls input[type="number"] {
-  width: 64px;
-}
+.controls input[type="number"] { width: 64px; }
 
 .legend { gap: 12px; }
 .legend-item { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
@@ -104,3 +102,24 @@ button, select, input[type="number"] {
 }
 button:hover { border-color: var(--accent); }
 button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* A* scores overlay text */
+.cell-scores {
+  font: 10px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  fill: #e7ecf3;
+}
+
+/* Inspector */
+.inspector {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed #2a3659;
+}
+.inspector h4 {
+  margin: 8px 0 6px;
+  font-size: 0.95rem;
+}
+.inspector .row {
+  color: var(--muted);
+  margin: 2px 0;
+}
